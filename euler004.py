@@ -9,18 +9,18 @@ import time
 
 start = time.perf_counter()
 
-a = 100
-b = 100
+max = 0
 
-while a <= 999:
-    while b <= 999:
+for a in range(100,1000):
+    for b in range(100,1000):
         c = a * b
-        print(c)
-        print(str(c)[0])
-        if str(c)[0] == str(c)[4]:
-            print(c)
-        b = b + 1
-    a = a + 1
+        
+        second_half = str(c)[len(str(c))//2:]
+        
+        if str(c)[:len(str(c))//2] == second_half[::-1] and max < c:
+            print(a,b,c)
+            max = c
+        
     
 
 print(time.perf_counter()-start)
