@@ -14,22 +14,12 @@ from algorithms import factors_list as f
 
 start = time.perf_counter()
 
-a = []
 t = 0
-for i in range(1,10000):
-    fi = f(i)
-    if len(fi) > 2:
-        fis = sum(fi)
-        for j in range(1,10000):
-            ji = f(j)
-            if i != j and len(ji) > 2:
-                jis = sum(ji)
-                if i == jis and fis == j and i not in a and j not in a:
-                    print(i, 'is amicable with', j)
-                    a.append(i)
-                    a.append(j)
-                    t += i+j
+for a in range(1,10000):
+    b = sum(f(a))
+    if sum(f(b)) == a and b != a:
+            print(a, 'is amicable with', b)
+            t += a
 
 print(t)
-
 print(time.perf_counter()-start)
